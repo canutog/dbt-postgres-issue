@@ -1,4 +1,5 @@
-project:
-  name: dbt-postgres-issue
 postgres:
-  tag: 17.2
+    tag: 17.2
+    password: password
+project:
+    name: dbt-postgres-microbatch-issue

@@ -2,7 +2,7 @@ airflow:
   connections:
     - conn_id: postgres
       conn_type: postgres
-      conn_host: 172.18.0.2
+      conn_host: 172.20.0.2
       conn_schema: noc
       conn_login: postgres
       conn_password: postgres

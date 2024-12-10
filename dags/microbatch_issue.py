@@ -15,8 +15,8 @@ DBT_PROJECT_DIR = "/usr/local/airflow/dbt"
 
 
 with DAG(
-    "dbt_basic_dag",
-    start_date=datetime(2020, 12, 23),
+    "microbatch_issue",
+    start_date=datetime(2024, 12, 1),
     description="A sample Airflow DAG to invoke dbt runs using a BashOperator",
     schedule_interval=None,
     catchup=False,
@@ -37,14 +37,20 @@ with DAG(
         bash_command=f"dbt seed --profiles-dir {DBT_PROJECT_DIR} --project-dir {DBT_PROJECT_DIR}",
     )
 
-    dbt_run = BashOperator(
-        task_id="dbt_run",
-        bash_command=f"dbt run --profiles-dir {DBT_PROJECT_DIR} --project-dir {DBT_PROJECT_DIR}",
+    dbt_run_stg_encoded_tree = BashOperator(
+        task_id="dbt_run_stg_encoded_tree",
+        bash_command=f"dbt run --select stg_encoded_tree --profiles-dir {DBT_PROJECT_DIR} --project-dir {DBT_PROJECT_DIR} --debug",
+    )
+    dbt_run_tree_routes_no_error = BashOperator(
+        task_id="dbt_run_tree_routes_no_error",
+        bash_command=f"dbt run --select tree_routes_no_error --profiles-dir {DBT_PROJECT_DIR} --project-dir {DBT_PROJECT_DIR} --debug",
+    )
+    dbt_run_tree_routes_with_alias_error = BashOperator(
+        task_id="dbt_run_tree_routes_with_alias_error",
+        bash_command=f"dbt run --select tree_routes_with_alias_error --profiles-dir {DBT_PROJECT_DIR} --project-dir {DBT_PROJECT_DIR} --debug",
+        retries=0
     )
 
-    dbt_test = BashOperator(
-        task_id="dbt_test",
-        bash_command=f"dbt test --profiles-dir {DBT_PROJECT_DIR} --project-dir {DBT_PROJECT_DIR}",
-    )
 
-    dbt_seed >> dbt_run >> dbt_test
+
+    dbt_seed >> dbt_run_stg_encoded_tree >> dbt_run_tree_routes_no_error >> dbt_run_tree_routes_with_alias_error

@@ -5,4 +5,5 @@ USER root
 RUN mkdir -p /home/astro/.dbt
 COPY dbt/profiles.yml /home/astro/.dbt/profiles.yml
 
+
 USER astro

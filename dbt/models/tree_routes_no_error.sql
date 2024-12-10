@@ -11,6 +11,8 @@
 
 WITH RECURSIVE tree_paths AS (
     SELECT
+        NodeID::VARCHAR AS route,
+        Value::VARCHAR AS full_path,
         *
     FROM {{ ref('stg_encoded_tree') }}
     WHERE ParentID IS NULL

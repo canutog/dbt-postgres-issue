@@ -84,6 +84,7 @@ class DbtDagParser:
                 f"dbt {self.dbt_global_cli_flags} {dbt_verb} "
                 f"--target {self.dbt_target} --models {model_name} "
                 f"--profiles-dir {self.dbt_profiles_dir} --project-dir {self.dbt_project_dir}"
+                f"--debug --full-refresh"
             ),
             env={
                 "DBT_USER": "{{ conn.postgres.login }}",
