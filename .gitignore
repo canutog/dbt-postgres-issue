@@ -2,8 +2,8 @@
 .env
 .venv
 logs
-dbt/target
-airflow_settings.yaml
+target
+dbt\target\manifest.json
 .DS_Store
 .idea*
 *.pyc

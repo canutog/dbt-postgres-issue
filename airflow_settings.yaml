@@ -1,0 +1,11 @@
+airflow:
+  connections:
+    - conn_id: postgres
+      conn_type: postgres
+      conn_host: 172.18.0.2
+      conn_schema: noc
+      conn_login: postgres
+      conn_password: postgres
+      conn_port: 5432
+      conn_extra:
+        example_extra_field: example-value

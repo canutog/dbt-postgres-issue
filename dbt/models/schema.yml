@@ -8,5 +8,4 @@ sources:
       - name: encoded_tree_example
     config:
       event_time: date
-models:
-  - name: tree_routes.sql
+
