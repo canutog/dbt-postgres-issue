@@ -1,2 +1,4 @@
 project:
-  name: airflow-dbt-demo
+  name: dbt-postgres-issue
+postgres:
+  tag: 17.2

@@ -1,6 +1,6 @@
-name: 'jaffle_shop'
+name: 'issue'
 version: '0.1'
-profile: 'jaffle_shop'
+profile: 'issue'
 config-version: 2
 
 source-paths: ["models"]
@@ -16,8 +16,5 @@ clean-targets:
     - "logs"
 
 models:
-  jaffle_shop:
-      materialized: table
-      staging:
-        materialized: view
-        +tags: "tag_staging"
+  issue:
+    +materialized: table

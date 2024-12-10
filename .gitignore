@@ -1,5 +1,8 @@
 .git
 .env
+.venv
+logs
+dbt/target
 airflow_settings.yaml
 .DS_Store
 .idea*
