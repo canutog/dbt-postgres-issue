@@ -11,7 +11,7 @@
 
 WITH RECURSIVE tree_paths AS (
     SELECT
-        NodeID::VARCHAR AS route,''
+        NodeID::VARCHAR AS route,
         Value::VARCHAR AS full_path,
         *
     FROM (select * from  {{ ref('stg_encoded_tree') }}) as nodes

@@ -2,7 +2,7 @@ issue:
   outputs:
     dev:
       type: postgres
-      threads: 1
+      threads: 2
       host: "{{ env_var('DBT_HOST') or 'localhost'}}"
       port: 5432
       user: postgres
