@@ -53,4 +53,9 @@ with DAG(
 
 
 
-    dbt_seed >> dbt_run_stg_encoded_tree >> dbt_run_tree_routes_no_error >> dbt_run_tree_routes_with_alias_error
+    dbt_seed >> dbt_run_stg_encoded_tree
+    dbt_run_stg_encoded_tree >> [
+        dbt_run_tree_routes_no_error,
+        dbt_run_tree_routes_with_alias_error
+    ]
+    
